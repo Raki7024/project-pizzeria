@@ -446,11 +446,10 @@
         body: JSON.stringify(payload),
       };
       fetch(url, options)
-        .then(function (response) {
+        .then(function(response){
           return response.json();
-        })
-        .then(function (parsedResponse) {
-          console.log('parsedResponse: ', parsedResponse);
+        }).then(function (parsedResponse) {
+          console.log('parsedResponse', parsedResponse);
         });
 
     }
