@@ -3,12 +3,14 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
+    homeWidget: '#template-home-widget',
   },
   containerOf: {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    homePage: '.home-page'
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -43,16 +45,34 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    allTables: '.floor-plan',
+    form: '.booking-form',
+    formSubmit: '.order-confirmation [type="submit"]',
+    address: '.order-confirmation [name="address"]',
+    phone: '.order-confirmation [name="phone"]',
+    startersBox: '.starters',
+    starters: '.checkbox',
+  },
+  homePage: {
+    orderLink: 'a[href="#order-page"]',
+    bookLink: 'a[href="#booking-page"]',
+  },
+  sections: {
+    home: '#home-page',
+    order: '#order',
+    booking: '#booking',
   },
   nav: {
     links: '.main-nav a',
+    homeLink: 'a[href="#home-page"]',
+    orderLink: 'a[href="#order"]',
+    bookingLink: 'a[href="#booking"]',
   },
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',
     totalNumber: `.cart__total-number`,
-    totalPrice:
-      '.cart__total-price strong, .cart__order-total .cart__order-price-sum strong',
+    totalPrice: '.cart__total-price strong, .cart__order-total .cart__order-price-sum strong',
     subtotalPrice: '.cart__order-subtotal .cart__order-price-sum strong',
     deliveryFee: '.cart__order-delivery .cart__order-price-sum strong',
     form: '.cart__order',
@@ -79,13 +99,14 @@ export const classNames = {
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
+    tableSelected: 'selected',
   },
   nav: {
     active: 'active',
   },
   pages: {
     active: 'active',
-  },
+  }
 };
 
 export const settings = {
@@ -110,11 +131,11 @@ export const settings = {
   db: {
     products: 'products',
     orders: 'orders',
-    url: '//localhost:3131',
+    url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
     product: 'product',
     order: 'order',
-    booking: 'booking',
-    event: 'event',
+    bookings: 'bookings',
+    events: 'events',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',
@@ -123,11 +144,8 @@ export const settings = {
 };
 
 export const templates = {
-  menuProduct: Handlebars.compile(
-    document.querySelector(select.templateOf.menuProduct).innerHTML
-  ),
-  cartProduct: Handlebars.compile(
-    document.querySelector(select.templateOf.cartProduct).innerHTML
-  ),
+  menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
+  cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
+  homeWidget: Handlebars.compile(document.querySelector(select.templateOf.homeWidget).innerHTML)
 };
